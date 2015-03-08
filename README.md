@@ -6,7 +6,7 @@ You need to install the linux kernel headers for your kernel before you begin.
 $ make
 $ sudo insmod keyer.ko
 ```
-Check its module is running:
+Check if module is running:
 ```sh
 $ dmesg | tail 
 ```
